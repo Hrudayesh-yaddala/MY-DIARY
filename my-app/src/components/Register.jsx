@@ -1,4 +1,4 @@
-import backImage from "../Images/background.jpg";
+import backImage from "../Images/background.webp";
 import { useState } from "react";
 import axios from "axios";
 import {toast} from "react-hot-toast"
@@ -85,7 +85,8 @@ const Register = () => {
           <input className="p-2 border border-gray-500 rounded-md" type="password" name="confirmpassword" id="confirmpassword" onChange={(e)=>setConfirmPassword(e.target.value)}/>
         </div>
 
-        <button type="submit" className="bg-[#a86add] text-white rounded px-4 py-2 mb-4 w-full md:w-72 lg:w-52  hover:bg-[#9338e4]">Register</button>
+        {/* <button type="submit" className="bg-[#a86add] text-white rounded px-4 py-2 mb-4 w-full md:w-72 lg:w-52  hover:bg-[#9338e4]">Register</button> */}
+        <button type="submit" className="bg-[#a86add] text-white rounded px-4 py-2 mb-4 sm:w-44 md:w-20 lg:w-52   hover:bg-[#9338e4]">Register</button>      
       </form>
       <p className="text-center mt-5">
         Already have an account?{" "}

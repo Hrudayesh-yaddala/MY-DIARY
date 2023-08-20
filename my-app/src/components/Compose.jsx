@@ -1,5 +1,5 @@
 import { useState } from "react";
-import bgImage from "../Images/bgimage.jpg";
+import bgImage from "../Images/bgimage.webp";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-hot-toast";
 import axios from "axios";
@@ -43,22 +43,23 @@ const Compose = () => {
     formData.append("date", currentDate);
     try {
       const response = await axios.post(
-        "https://busy-rose-moth-vest.cyclic.cloud/api/user/compose",
-        formData, {headers: {
-          Authorization: `Bearer ${localStorage.getItem("token")}`,
-        },}
+        "https://busy-rose-moth-vest.cyclic.cloud/compose",
+        formData, {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+          },
+      }
       );
       console.log(response.data);
-      if(response.status===400) toast.error("Fill Entry field ");
-      if(response.status === 200)
-      {
+      if (response.status === 400) toast.error("Fill Entry field ");
+      if (response.status === 200) {
         toast.success("Entry Saved Successfully!!");
-          setTimeout(()=>{
+        setTimeout(() => {
           navigate("/home");
-          },2000)
-          
+        }, 2000)
+
       }
-      if(response.status===500) toast.error("Internal server error");
+      if (response.status === 500) toast.error("Internal server error");
 
       // Handle the response data as needed
     } catch (err) {
@@ -139,7 +140,7 @@ const Compose = () => {
             value={fontSize}
             onChange={handleFontSizeChange}
           >
-            <option value=  {12}>12</option>
+            <option value={12}>12</option>
             <option value={14}>14</option>
             <option value={16}>16</option>
             <option value={17}>17</option>
@@ -183,7 +184,7 @@ const Compose = () => {
             Upload
           </button>
         </div>
-        
+
       </div>
 
       {/* {images.length > 0 && (
@@ -199,21 +200,24 @@ const Compose = () => {
           ))}
         </div>
       )}  */}
-      
+      {images.length > 0 && (
+        <div className="mt-4 grid gap-4 grid-cols-1 sm:grid-cols-2 md:grid-cols-3">
+          {images.map((image, index) => (
+            <div key={index} className="relative">
+              <img
+                className="w-72 h-72 object-cover rounded-xl"
+                src={URL.createObjectURL(image)}
+                alt={`Inserted ${index}`}
+              />
+            </div>
+          ))}
+        </div>
+      )}
 
-      {/* <div className="text-xs mt-4 text-right text-gray-500">
-        {savedEntry && (
-          <div>
-            Entry saved!
-            <br />
-            {savedEntry}
-          </div>
-        )}
-      </div> */}
       <div className="h-40 sm:h-32 md:h-34 lg:h-48 xl:h-50"></div>
 
     </div>
-    
+
   );
 };
 

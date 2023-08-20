@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from "react-router-dom";
-import bgImage from '../Images/bgimage.jpg';
-import backImage from '../Images/background.jpg';
+import bgImage from '../Images/bgimage.webp';
+import backImage from '../Images/background.webp';
 import { toast } from 'react-hot-toast';
 import axios from 'axios';
 

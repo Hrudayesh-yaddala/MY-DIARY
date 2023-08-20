@@ -1,6 +1,6 @@
 import React from 'react';
-import bgImage from '../Images/bgimage.jpg';
-import backImage from '../Images/background.jpg';
+import bgImage from '../Images/bgimage.webp';
+import backImage from '../Images/background.webp';
 import ContactAbout from './ContactAbout';
 import Testimonial from './Testimonial';
 import { FaBook } from "react-icons/fa";

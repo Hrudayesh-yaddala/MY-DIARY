@@ -1,6 +1,6 @@
 import { React,useState } from 'react';
 import axios from 'axios';
-import backImage from '../Images/background.jpg';
+import backImage from '../Images/background.webp';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-hot-toast';
 

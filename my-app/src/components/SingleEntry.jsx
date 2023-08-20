@@ -2,7 +2,7 @@ import  { useState, useEffect } from "react";
 import axios from "axios";
 import { useParams } from "react-router-dom";
 import { toast } from "react-hot-toast";
-import backImage from '../Images/background.jpg';
+import backImage from '../Images/background.webp';
 const SingleEntry = () => {
   const { id } = useParams();
   const [entry, setEntry] = useState(null);
@@ -28,31 +28,31 @@ const SingleEntry = () => {
   };
 
   if (!entry) {
-    toast.success("No Entry found");
+    toast.success("Loading....");
     return <div>Loading...</div>;
   }
 
   return (
-    <div className=" flex-grow text-left hover:bg-backImage focus:bg-startImage  bg-cover bg-center bg-no-repeat bg-gray-100" style={{ backgroundImage: `url(${backImage})`}}>
-      <h1 className="text-3xl font-semibold mb-6 text-center">Entry Details</h1>
-      <div className="bg-transparent p-6  rounded-lg">
-        <h2 className="text-xl font-semibold mb-4">{new Date(entry.date).toLocaleDateString()}</h2>
-        {/* <button onClick={() => handleDeleteEntry(entry._id)} className="text-red-600"><FontAwesomeIcon icon={faTrash} /></button> */}
-        <p className="mb-4">{entry.comment}</p>
-        <div className="flex space-x-4">
-          {entry.images.map((image, index) => (
-            <img
-              key={index}
-              src={image}
-              alt={`Image ${index + 1}`}
-              className="w-48 h-48 object-cover"
-            />
-          ))}
-        </div>
-      </div>
-      <div className="h-40 sm:h-32 md:h-34 lg:h-48 xl:h-50"></div>
-      
+    <div className="flex-grow text-left hover:bg-backImage focus:bg-startImage bg-cover bg-center bg-no-repeat bg-gray-100" style={{ backgroundImage: `url(${backImage})` }}>
+  <h1 className="text-3xl font-semibold mb-6 text-center">Entry Details</h1>
+  <div className="bg-transparent p-6 rounded-lg">
+    <h2 className="text-xl font-semibold mb-4">{new Date(entry.date).toLocaleDateString()}</h2>
+    {/* <button onClick={() => handleDeleteEntry(entry._id)} className="text-red-600"><FontAwesomeIcon icon={faTrash} /></button> */}
+    <p className="mb-4">{entry.comment}</p>
+    <div className="flex flex-wrap gap-4">
+      {entry.images.map((image, index) => (
+        <img
+          key={index}
+          src={image}
+          alt={`Image ${index + 1}`}
+          className="w-64 sm:w-1/2 md:w-1/3 lg:w-1/4 xl:w-1/5 h-48 object-cover"
+        />
+      ))}
     </div>
+  </div>
+  <div className="h-40 sm:h-32 md:h-34 lg:h-48 xl:h-50"></div>
+</div>
+
   );
 };
 

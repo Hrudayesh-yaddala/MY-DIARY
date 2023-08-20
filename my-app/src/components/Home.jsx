@@ -1,4 +1,4 @@
-import homebg from "../Images/home.jpg";
+import homebg from "../Images/home.webp";
 import { Link } from "react-router-dom";
 
 function Home() {
