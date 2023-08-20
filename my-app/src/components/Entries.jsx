@@ -140,7 +140,7 @@
 import backImage from "../Images/background.jpg";
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { MdDelete } from "react-icons/Md";
+import { MdDelete } from "react-icons/md";
 import axios from "axios";
 import { toast } from "react-hot-toast";
 
