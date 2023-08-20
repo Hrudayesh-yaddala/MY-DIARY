@@ -44,11 +44,9 @@ const Compose = () => {
     try {
       const response = await axios.post(
         "https://busy-rose-moth-vest.cyclic.cloud/compose",
-        formData, {
-          headers: {
-            Authorization: `Bearer ${localStorage.getItem("token")}`,
-          },
-      }
+        formData, {headers: {
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+        },}
       );
       console.log(response.data);
       if (response.status === 400) toast.error("Fill Entry field ");
