@@ -43,7 +43,7 @@ const Compose = () => {
     formData.append("date", currentDate);
     try {
       const response = await axios.post(
-        "http://localhost:3000/compose",
+        "https://busy-rose-moth-vest.cyclic.cloud/api/user/compose",
         formData, {headers: {
           Authorization: `Bearer ${localStorage.getItem("token")}`,
         },}
