@@ -1,6 +1,6 @@
 import React from 'react';
-import { BsGithub, BsLinkedin, BsTwitter } from 'react-icons/Bs';
-import { SiGmail } from 'react-icons/Si';
+import { BsGithub, BsLinkedin, BsTwitter } from 'react-icons/bs';
+import { SiGmail } from 'react-icons/si';
 const Footer = () => {
   return (
     <footer className='bg-[#a86add] '>
