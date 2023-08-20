@@ -17,7 +17,7 @@ const ContactAbout = () => {
   const handleSubmit=async(e)=>{
     e.preventDefault();
     try{
-      const response = await axios.post("http://localhost:3000/api/user/contact",data,{
+      const response = await axios.post("https://busy-rose-moth-vest.cyclic.cloud/contact",data,{
         headers : {
           'Content-type' : 'application/json'
         }
