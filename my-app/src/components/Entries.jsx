@@ -161,7 +161,7 @@ const Entries = () => {
       }
 
       const response = await axios.get(
-        "http://localhost:3000/api/user/entries",
+        "https://busy-rose-moth-vest.cyclic.cloud/api/user/entries",
         {
           headers: {
             Authorization: `Bearer ${token}`,
@@ -190,7 +190,7 @@ const Entries = () => {
   const handleDeleteEntry = async (id) => {
     try {
       const response = await axios.delete(
-        `http://localhost:3000/api/user/entries/${id}`
+        `https://busy-rose-moth-vest.cyclic.cloud/api/user/entries/${id}`
       );
       if (response.status === 200) {
         toast.success(response.data.message);
