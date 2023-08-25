@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useNavigate } from "react-router-dom";
+import { useNavigate,Link} from "react-router-dom";
 import bgImage from '../Images/bgimage.webp';
 import backImage from '../Images/background.webp';
 import { toast } from 'react-hot-toast';
