@@ -15,7 +15,7 @@ const SingleEntry = () => {
 
   const fetchEntry = async () => {
     try {
-      const response = await axios.get(`https://busy-rose-moth-vest.cyclic.cloud/api/user/entries/${id}`);
+      const response = await axios.get(`http://localhost:3000/api/user/entries/${id}`);
       if(response.status===200){
       setEntry(response.data.entry);
       toast.success("Entry fetched Successfully")
