@@ -3,14 +3,48 @@ const User = require("../models/User");
 const bcrypt = require("bcrypt");
 const DiaryEntry = require("../models/Entry");
 const jwt = require("jsonwebtoken");
-// const currentDate="wednesday";
 
 require("dotenv").config();
+// const signup = async (req, res) => {
+//   try {
+//     const { firstname, lastname, email, password } = req.body;
+//     if (!firstname || !lastname || !email || !password) {
+//       return res.status(400).json({ message: "Fill all details" });
+//     }
+//     const isUser = await User.findOne({ email: email }); //undefined
+//     if (isUser) {
+//       return res.status(409).json({ message: "User already exists" });
+//     }
+//     const hashedPassword = await bcrypt.hash(req.body.password, 10);
+//     req.body.password = hashedPassword;
+//     const newUser = await User.create(req.body);
+//     return res.status(200).json({ message: "user registered", user: newUser });
+//   } catch (err) {
+//     console.log(err);
+//     return res.status(500).json({ message: err.message });
+//   }
+// };
+
 const signup = async (req, res) => {
   try {
     const { firstname, lastname, email, password } = req.body;
-    if (!firstname || !lastname || !email || !password) {
-      return res.status(400).json({ message: "Fill all details" });
+    const hasNumber = /\d/;
+    const hasSpecialCharacter = /[!@#$%^&*()_+{}\[\]:;<>,.?~\\-]/;
+    const hasUpperCase = /[A-Z]/;
+    // Check if the string meets all other conditions
+    const containsNumber = hasNumber.test(password);
+    const containsSpecialCharacter = hasSpecialCharacter.test(password);
+    const containsUpperCase = hasUpperCase.test(password);
+
+    if (!firstname || !lastname || !email || !password ) {
+      return res.status(400).json({ message: "Fill all Details" });
+    }
+
+    if (!containsNumber || !containsSpecialCharacter || !containsUpperCase) {
+      return res.status(400).json({ message: "use atleast one UpperCase letter one Special Character and One Number in Your Password" })
+    }
+    if (password.length < 7) {
+      return res.status(400).json({ message: "Your Password must be at least 7 Characters" })
     }
     const isUser = await User.findOne({ email: email }); //undefined
     if (isUser) {
@@ -19,9 +53,13 @@ const signup = async (req, res) => {
     const hashedPassword = await bcrypt.hash(req.body.password, 10);
     req.body.password = hashedPassword;
     const newUser = await User.create(req.body);
+    // const uniqueObjid = await bcrypt.hash(req.body.email,12);
+    // const newUser = await User.create({firstname: firstname,lastname:lastname, email: email, password:hashedPassword, phone: phone,uniqueObjid: uniqueObjid});
+
+
     return res.status(200).json({ message: "user registered", user: newUser });
   } catch (err) {
-    console.log(err);
+    // console.log(err);
     return res.status(500).json({ message: err.message });
   }
 };
